@@ -1,4 +1,5 @@
 import express,{json, Request, Response} from "express"
+import { getPlayer } from "./controllers/players-controllers"
 
 
 
@@ -7,12 +8,7 @@ export const createAPP = ()=>{
 
     app.use(json())
 
-    app.get("/",(req:Request, res:Response)=>{
-        res.status(200).json({
-            nome: "Ronaldinho",
-            numero: 80
-        })
-    })
+    app.get("/",getPlayer)
 
     return app
 }
