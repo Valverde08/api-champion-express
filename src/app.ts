@@ -1,5 +1,6 @@
-import express,{json, Request, Response} from "express"
-import { getPlayer } from "./controllers/players-controllers"
+import express,{json} from "express"
+
+import router from "./routes"
 
 
 
@@ -8,7 +9,7 @@ export const createAPP = ()=>{
 
     app.use(json())
 
-    app.get("/",getPlayer)
+    app.use("/api", router)
 
     return app
 }
