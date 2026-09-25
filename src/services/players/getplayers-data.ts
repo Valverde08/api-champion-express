@@ -1,10 +1,8 @@
+import { findAllPlayers } from "../../Repositories/Players/get-players-repository"
 import { HttpResponse, noContent, OK } from "../../utils/httpHelper"
 
 export const getPlayersDataService = async ()=>{
-    const data = {
-            nome: "Ronaldinho",
-            numero: 80
-        }
+    const data = await findAllPlayers()
     let response:HttpResponse
     
     if(data){
