@@ -18,3 +18,7 @@ export const getPlayerById = async (req: Request, res: Response) => {
 
   res.status(player.statusCode).json(player.body);
 };
+
+export const postPlayer = async (req:Request, res:Response)=>{
+  const bodyParams = req.body
+}
