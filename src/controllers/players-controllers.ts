@@ -1,17 +1,20 @@
-import { Request, Response } from "express"
-import { getPlayersDataService } from "../services/players/getplayers-data"
-import {OK} from "../utils/httpHelper"
+import { OK } from "../utils/httpHelper";
+import {
+  getPlayerIdService,
+  getPlayersDataService,
+} from "./../services/players/getplayers-data";
+import { Request, Response } from "express";
 
+export const getPlayer = async (req: Request, res: Response) => {
+  const dataPlayers = await getPlayersDataService();
 
-export const getPlayer = async (req:Request, res:Response)=>{
-    
+  res.status(dataPlayers.statusCode).json(dataPlayers.body);
+};
 
-    const dataPlayers =await getPlayersDataService ()
+export const getPlayerById = async (req: Request, res: Response) => {
+  const id = Number(req.params.id);
 
-    
+  const player = await getPlayerIdService(id);
 
-    res.status(dataPlayers.statusCode).json(dataPlayers.body)
-
-       
-}
-
+  res.status(player.statusCode).json(player.body);
+};

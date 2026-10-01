@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { getPlayer } from "./controllers/players-controllers";
+import { getPlayer, getPlayerById } from "./controllers/players-controllers";
 
+const router = Router();
 
-const router = Router()
+router.get("/players", getPlayer);
 
+router.get("/players/:id", getPlayerById);
 
-router.get("/players",getPlayer)
-
-export default router
+export default router;
