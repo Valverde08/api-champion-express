@@ -7,6 +7,15 @@ export const OK = async (data: any): Promise<HttpResponse> => {
   };
 };
 
+export const created = async (data: any): Promise<HttpResponse> => {
+  return {
+    statusCode: 201,
+    body: {
+      message: "Cirado com sucesso",
+    },
+  };
+};
+
 export const noContent = async (): Promise<HttpResponse> => {
   return {
     statusCode: 204,

@@ -3,8 +3,9 @@ import { playerModel } from "../../models/players/player-model";
 import {
   findAllPlayers,
   findPlayerByid,
+  insertPlayer,
 } from "../../Repositories/Players/get-players-repository";
-import { badRequest, noContent, OK } from "../../utils/httpHelper";
+import { badRequest, created, noContent, OK } from "../../utils/httpHelper";
 
 export const getPlayersDataService = async () => {
   const data = await findAllPlayers();
@@ -36,11 +37,12 @@ export const createPlayerService = async (player: playerModel) => {
   let response: HttpResponse;
 
   if (Object.keys(player).length !== 0) {
-    console.log("Good");
-    response = await OK(player);
+    await insertPlayer(player);
+    response = await created(player);
   } else {
-    console.log("Bad");
     response = await badRequest();
   }
   return response;
 };
+
+export const deletePlayerService = async (id: number) => {};

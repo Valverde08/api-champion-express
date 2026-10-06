@@ -26,16 +26,18 @@ export const postPlayer = async (req: Request, res: Response) => {
 
   const playerResponse = await createPlayerService(bodyParams);
 
-  console.log(playerResponse);
+  if (playerResponse) {
+    console.log("ola");
 
-  res.status(playerResponse.statusCode).json(playerResponse.body);
-
-  //   if (playerResponse) {
-  //     console.log("ola");
-
-  //     res.status(playerResponse.statusCode).json(playerResponse.body);
-  //   } else {
-  //     let response = await badRequest();
-  //     res.status(response.statusCode).json(response.body);
-  //   }
+    res.status(playerResponse.statusCode).json(playerResponse.body);
+  } else {
+    let response = await badRequest();
+    res.status(response.statusCode).json(response.body);
+  }
 };
+
+export const deletePlayer = async (req:Request, res:Response) => {
+  const idPlayer = Number(req.params.id)
+
+  const deletedPlayer = await
+}; 
