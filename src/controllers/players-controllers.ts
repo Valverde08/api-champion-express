@@ -2,6 +2,7 @@ import { HttpResponse } from "../models/http/http-responde-model";
 import { badRequest } from "../utils/httpHelper";
 import {
   createPlayerService,
+  deletePlayerService,
   getPlayerIdService,
   getPlayersDataService,
 } from "./../services/players/getplayers-data";
@@ -36,8 +37,10 @@ export const postPlayer = async (req: Request, res: Response) => {
   }
 };
 
-export const deletePlayer = async (req:Request, res:Response) => {
-  const idPlayer = Number(req.params.id)
+export const deletePlayer = async (req: Request, res: Response) => {
+  const idPlayer = Number(req.params.id);
 
-  const deletedPlayer = await
-}; 
+  const deletedPlayer = await deletePlayerService(idPlayer);
+
+  res.status(deletedPlayer.statusCode).json(deletedPlayer.body);
+};

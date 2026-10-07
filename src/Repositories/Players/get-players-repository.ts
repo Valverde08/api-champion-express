@@ -252,3 +252,11 @@ export const findPlayerByid = async (
 export const insertPlayer = async (player: playerModel) => {
   databse.push(player);
 };
+
+export const deleteOnePlayer = async (id: number) => {
+  const index = databse.findIndex((player) => player.id === id);
+
+  if (index !== -1) {
+    databse.splice(index, 1);
+  }
+};

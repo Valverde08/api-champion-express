@@ -1,6 +1,7 @@
 import { HttpResponse } from "../../models/http/http-responde-model";
 import { playerModel } from "../../models/players/player-model";
 import {
+  deleteOnePlayer,
   findAllPlayers,
   findPlayerByid,
   insertPlayer,
@@ -45,4 +46,10 @@ export const createPlayerService = async (player: playerModel) => {
   return response;
 };
 
-export const deletePlayerService = async (id: number) => {};
+export const deletePlayerService = async (id: number) => {
+  let response = null;
+  await deleteOnePlayer(id);
+
+  response = OK({ message: "deleted" });
+  return response;
+};
